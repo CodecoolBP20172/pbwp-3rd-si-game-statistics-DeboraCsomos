@@ -4,8 +4,8 @@
 
 def file_processing(file_name):
     games_list = []
-    with open(file_name, "r") as f:
-        for line in f:
+    with open(file_name, "r") as file:
+        for line in file:
             games_list.append(line.strip().split("\t"))
     return games_list
 
@@ -24,7 +24,30 @@ def decide(file_name, year):
     return False
 
 
-# def get_latest(file_name):
+def get_latest(file_name):
+    games_list = file_processing(file_name)
+    latest = 0
+    for item in games_list:
+        if int(item[2]) > latest:
+            latest = int(item[2])
+    for item in games_list:
+        if int(item[2]) == latest:
+            return item[0]
 
-# print (count_games("game_stat.txt"))
-# print (decide("game_stat.txt", 2011))
+
+def count_by_genre(file_name, genre):
+    games_list = file_processing(file_name)
+    games_of_spec_genre = []
+    for item in games_list:
+        if item[3] == genre:
+            games_of_spec_genre.append(item[0])
+    return len(games_of_spec_genre)
+
+
+def get_line_number_by_title(file_name, title):
+    games_list = file_processing(file_name)
+    for item in games_list:
+        if item[0] == title:
+            return games_list.index(item) + 1
+    raise ValueError
+    return
