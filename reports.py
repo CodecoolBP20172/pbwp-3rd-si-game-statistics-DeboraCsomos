@@ -3,10 +3,8 @@
 
 
 def file_processing(file_name):
-    games_list = []
     with open(file_name, "r") as file:
-        for line in file:
-            games_list.append(line.strip().split("\t"))
+        games_list = [line.strip().split("\t") for line in file]
     return games_list
 
 
