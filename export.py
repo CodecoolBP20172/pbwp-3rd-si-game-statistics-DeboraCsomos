@@ -20,3 +20,4 @@ def exporting_results_to_file(export_file="reports.txt"):
 
 
 exporting_results_to_file()
+print ("Check your new reports.txt file, and finally let me watch the new Silicon Valley episode!")
