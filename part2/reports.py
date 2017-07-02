@@ -21,6 +21,7 @@ def get_sold_copies(games_list):
     return sold_copies
 
 
+# returns the title of the most played game in the database
 def get_most_played(file_name):
     games_list = file_processing(file_name)
     sold_copies = get_sold_copies(games_list)
@@ -29,18 +30,21 @@ def get_most_played(file_name):
     return most_played_games[0]
 
 
+# returns the total of copies sold according to the database
 def sum_sold(file_name):
     games_list = file_processing(file_name)
     sold_copies = get_sold_copies(games_list)
     return sum(sold_copies)
 
 
+# returns the average of copies sold according to the database
 def get_selling_avg(file_name):
     games_list = file_processing(file_name)
     sold_copies = get_sold_copies(games_list)
     return sum(sold_copies) / len(sold_copies)
 
 
+# finds the game with the longest title in the database and returns its length
 def count_longest_title(file_name):
     games_list = file_processing(file_name)
     titles = []
@@ -49,12 +53,14 @@ def count_longest_title(file_name):
     return len(max(titles, key=len))
 
 
+# returns the average of releasing dates according to the database
 def get_date_avg(file_name):
     games_list = file_processing(file_name)
     release_dates = [int(item[2]) for item in games_list]
     return math.ceil(round(sum(release_dates) / len(release_dates)))
 
 
+# gets all available info about the given game
 def get_game(file_name, title):
     games_list = file_processing(file_name)
     for item in games_list:
@@ -64,6 +70,7 @@ def get_game(file_name, title):
             return item
 
 
+# counts how many games are in the given database by genre
 def count_grouped_by_genre(file_name):
     games_list = file_processing(file_name)
     group_by_genre = {}
@@ -75,6 +82,7 @@ def count_grouped_by_genre(file_name):
     return group_by_genre
 
 
+# gives the alphabetically- and descending date-ordered list of games in the database
 def get_date_ordered(file_name):
     games_list = file_processing(file_name)
     games_by_date = {}
