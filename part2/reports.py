@@ -68,6 +68,7 @@ def get_game(file_name, title):
             item[1] = float(item[1])
             item[2] = int(item[2])
             return item
+    return "Game not found"
 
 
 # counts how many games are in the given database by genre
@@ -91,3 +92,20 @@ def get_date_ordered(file_name):
     sorted_list_of_games_by_date = sorted(sorted(games_by_date, key=lambda item: item.lower()),
                                           key=games_by_date.__getitem__, reverse=True)
     return sorted_list_of_games_by_date
+
+
+def main():
+    data_file = input("Give name of data file (e.g. game_stat.txt): \n")
+    title = input("Enter title for question 6 (e.g. Diablo II): \n")
+    most_played = get_most_played(data_file)
+    total_sold = sum_sold(data_file)
+    selling_avg = get_selling_avg(data_file)
+    longest_title = count_longest_title(data_file)
+    date_avg = get_date_avg(data_file)
+    game_properties = get_game(data_file, title)
+    genres = count_grouped_by_genre(data_file)
+    game_list = get_date_ordered(data_file)
+
+
+if __name__ == "__main__":
+    main()
